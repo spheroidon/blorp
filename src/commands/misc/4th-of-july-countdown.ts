@@ -1,7 +1,6 @@
 import { SlashCommandBuilder, ChatInputCommandInteraction, EmbedBuilder } from 'discord.js';
 
 module.exports = {
-    cooldown: 5,
     data: new SlashCommandBuilder()
         .setName('4th-of-july-countdown')
         .setDescription('Get the countdown to the 4th of July!'),
