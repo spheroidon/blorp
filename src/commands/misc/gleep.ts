@@ -1,4 +1,4 @@
-import { SlashCommandBuilder, ChatInputCommandInteraction } from 'discord.js';
+import { SlashCommandBuilder, ChatInputCommandInteraction, EmbedBuilder } from 'discord.js';
 
 module.exports = {
     cooldown: 5,
@@ -6,6 +6,11 @@ module.exports = {
         .setName('gleep')
         .setDescription('Glorp?'),
     async execute(interaction: ChatInputCommandInteraction ) {
-        await interaction.reply('Glorp!');
+        const embed = new EmbedBuilder()
+            .setColor(0x46FA55)
+            .setTitle('Glorp!')
+            .setTimestamp();
+        
+        await interaction.reply({ embeds: [embed] });
     }
 }
