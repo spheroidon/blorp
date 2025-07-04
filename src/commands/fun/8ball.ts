@@ -22,7 +22,7 @@ module.exports = {
         const result = responses[Math.floor(Math.random() * responses.length)];
 
         // Set a random color for the embed
-        const colors = [0xFF5733, 0x33FF57, 0x3357FF, 0xF1C40F, 0x8E44AD];
+        const colors = [0x9613F1, 0xAE43F9, 0xF943F1, 0xA61BA0, 0xB20EE7];
         const randomColor = colors[Math.floor(Math.random() * colors.length)];
 
         const embed = new EmbedBuilder()
