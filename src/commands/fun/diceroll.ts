@@ -39,6 +39,12 @@ module.exports = {
                 ephemeral: true
             });
         }
+        if (numDice > 100 || dieSides > 1000) {
+            return await interaction.reply({
+                content: 'You cannot roll more than 100 dice or dice with more than 1000 sides.',
+                ephemeral: true
+            });
+        }
         let result = 0;
         const rolls = [];
         for (let i = 0; i < numDice; i++) {
