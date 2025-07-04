@@ -2,14 +2,13 @@ import { SlashCommandBuilder, ChatInputCommandInteraction, EmbedBuilder } from '
 import { BlorpClient } from '../../blorpclient';
 
 module.exports = {
-    cooldown: 5,
+    cooldown: 7,
     data: new SlashCommandBuilder()
         .setName('cmd-count')
         .setDescription('Check how many commands Blorp has to offer!'),
     async execute(interaction: ChatInputCommandInteraction ) {
         const commandCount = (interaction.client as BlorpClient).commands.size;
 
-        // fetch fun fact from http://numbersapi.com/{number}
         const response = await fetch(`http://numbersapi.com/${commandCount}`);
         const funfact = await response.text() || `Normally, I'd share a fun fact here, but I couldn't find one this time.`;
 
