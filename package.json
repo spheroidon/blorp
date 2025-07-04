@@ -1,0 +1,21 @@
+{
+  "name": "blorp",
+  "version": "1.0.0",
+  "description": "Multipurpose Discord Bot",
+  "main": "dist/index.js",
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "build": "tsc",
+    "start": "node ."
+  },
+  "author": "",
+  "license": "GNU AGPLv3",
+  "dependencies": {
+    "discord.js": "^14.21.0",
+    "dotenv": "^17.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.10",
+    "tsx": "^4.20.3"
+  }
+}
