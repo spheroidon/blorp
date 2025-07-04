@@ -33,7 +33,7 @@ const rest = new REST().setToken(process.env.BOT_TOKEN);
 
 (async () => {
     try {
-        console.log('Started refreshing application (/) commands.');
+        console.log('Started clearing and refreshing application (/) commands.');
 
         if (!process.env.CLIENT_ID) {
             console.error('Please set your CLIENT_ID in the .env file.');
@@ -42,10 +42,17 @@ const rest = new REST().setToken(process.env.BOT_TOKEN);
 
         await rest.put(
             Routes.applicationCommands(process.env.CLIENT_ID),
+            { body: [] },
+        );
+        console.log('Successfully unregistered all previous application (/) commands.');
+
+
+        await rest.put(
+            Routes.applicationCommands(process.env.CLIENT_ID),
             { body: commands },
         );
 
-        console.log('Successfully reloaded application (/) commands.');
+        console.log('Successfully registered updated application (/) commands.');
     } catch (error) {
         console.error(error);
     }
