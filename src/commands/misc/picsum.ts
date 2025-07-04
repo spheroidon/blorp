@@ -37,7 +37,7 @@ module.exports = {
 
         let baseUrl = 'https://picsum.photos';
 
-        if (seed) {
+        if (seed && seed.trim() !== '') {
             baseUrl += `/seed/${encodeURIComponent(seed)}`;
         }
 
