@@ -1,5 +1,5 @@
 import 'dotenv/config';
-import { ChatInputCommandInteraction, MessageFlags, SlashCommandBuilder } from "discord.js";
+import { ChatInputCommandInteraction, MessageFlags, SlashCommandBuilder, EmbedBuilder } from "discord.js";
 import { BlorpClient, loadCommands } from "../../blorpclient";
 
 module.exports = {
@@ -20,9 +20,14 @@ module.exports = {
 
         try {
             loadCommands(client);
-            await interaction.reply({
-                content: "Commands reloaded successfully.",
-            });
+
+            const embed = new EmbedBuilder()
+                .setColor(0xC2C2C2)
+                .setTitle("[⚙️] Commands Reloaded!")
+                .setDescription("All commands have been successfully reloaded.")
+                .setTimestamp();
+
+            await interaction.reply({ embeds: [embed] });
         } catch (error) {
             console.error("Error reloading commands:", error);
             await interaction.reply({
