@@ -21,7 +21,7 @@ module.exports = {
 
         const embed = new EmbedBuilder()
             .setColor(0xABBEEB)
-            .setTitle('Dad Joke')
+            .setTitle(`[🥸] Here's your Dad Joke:`)
             .setDescription(joke)
             .setFooter({ text: 'Dad Joke provided by icanhazdadjoke.com' })
             .setTimestamp();

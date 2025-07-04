@@ -8,7 +8,7 @@ module.exports = {
     async execute(interaction: ChatInputCommandInteraction ) {
         const embed = new EmbedBuilder()
             .setColor(0x46FA55)
-            .setTitle('Glorp!')
+            .setTitle('[👽] Glorp!')
             .setTimestamp();
         
         await interaction.reply({ embeds: [embed] });

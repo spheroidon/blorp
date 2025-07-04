@@ -31,7 +31,7 @@ module.exports = {
 
         const embed = new EmbedBuilder()
             .setColor(0xF7D2EA)
-            .setTitle(owoifiedText)
+            .setTitle(`[🎀] ${owoifiedText}`)
             .setTimestamp();
 
         await interaction.reply({ embeds: [embed] });

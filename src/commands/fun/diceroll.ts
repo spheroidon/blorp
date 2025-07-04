@@ -66,7 +66,7 @@ module.exports = {
 
         const embed = new EmbedBuilder()
             .setColor(0xE2392B)
-            .setTitle('Dice Roll Result')
+            .setTitle('[🎲] Dice Roll Result:')
             .setDescription(description)
             .setTimestamp();
 

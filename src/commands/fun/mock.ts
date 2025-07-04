@@ -24,7 +24,7 @@ module.exports = {
 
         const embed = new EmbedBuilder()
             .setColor(0xFCEE68)
-            .setTitle(mockedText)
+            .setTitle(`[🤪] ${mockedText}`)
             .setTimestamp();
         
         await interaction.reply({ embeds: [embed] });

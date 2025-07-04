@@ -27,7 +27,7 @@ module.exports = {
 
         const embed = new EmbedBuilder()
             .setColor(randomColor)
-            .setTitle('Magic 8-Ball Response')
+            .setTitle(`[🎱] The Magic 8-Ball's Response:`)
             .setDescription(`**Question:** ${interaction.options.getString('question')}\n**Answer:** ${result}`)
             .setTimestamp();
 

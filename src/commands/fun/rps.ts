@@ -30,9 +30,18 @@ module.exports = {
             result = `I chose **${botChoice}**. *You lose!*`;
         }
 
+        let emoji;
+        if (userChoice === 'rock') {
+            emoji = '✊';
+        } else if (userChoice === 'paper') {
+            emoji = '✋';
+        } else if (userChoice === 'scissors') {
+            emoji = '✌️';
+        }
+
         const embed = new EmbedBuilder()
             .setColor(0xEEE9DC)
-            .setTitle('Rock, Paper, Scissors Result')
+            .setTitle(`[${emoji}] Rock, Paper, Scissors!`)
             .setDescription(`You chose: **${userChoice}**. ${result}`)
             .setTimestamp();
 
