@@ -1,5 +1,6 @@
-import { Events, Interaction, MessageFlags } from 'discord.js';
+import { Collection, Events, Interaction, MessageFlags } from 'discord.js';
 import { BlorpClient } from '../blorpclient';
+import { time } from 'console';
 
 module.exports = {
     name: Events.InteractionCreate,
@@ -11,6 +12,33 @@ module.exports = {
         if (!command) {
             console.error(`No command matching ${interaction.commandName} was found.`);
             return;
+        }
+
+        const cooldowns = (interaction.client as BlorpClient).cooldowns;
+        if (!cooldowns.has(command.data.name)) {
+            cooldowns.set(command.data.name, new Collection());
+        }
+
+        const now = Date.now();
+        const timestamps = cooldowns.get(command.data.name);
+        const defaultCooldownDuration = 3;
+        const cooldownAmount = (command.cooldown || defaultCooldownDuration) * 1000;
+
+        if (timestamps && interaction && timestamps.has(interaction.user.id)) {
+            const userTimestamp = timestamps.get(interaction.user.id);
+            if (userTimestamp !== undefined) {
+                const expirationTime = userTimestamp + cooldownAmount;
+
+                if (now < expirationTime) {
+                    const expiredTimestamp = Math.round(expirationTime / 1_000);
+                    return interaction.reply({ content: `Please wait, you are on a cooldown for \`${command.data.name}\`. You can use it again <t:${expiredTimestamp}:R>.`, flags: MessageFlags.Ephemeral });
+                }
+            }
+        }
+
+        if (timestamps) {
+            timestamps.set(interaction.user.id, now);
+            setTimeout(() => timestamps.delete(interaction.user.id), cooldownAmount);
         }
 
         try {
